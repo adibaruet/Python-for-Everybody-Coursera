@@ -1,0 +1,23 @@
+fname = input("Enter file name: ")
+fh = open(fname)
+lst=[]
+
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:") : continue
+    b=line
+    #print(b)
+    x=b.find('0')
+    host=b[x:]
+    #print(host)
+    flt=float(host)
+    #print(flt)
+    lst.append(flt)
+    #print(lst)
+    
+total=0
+count=0
+for i in lst:
+    total=i+total
+    count=count+1
+#print(count)
+print("Average spam confidence:",total/count)
